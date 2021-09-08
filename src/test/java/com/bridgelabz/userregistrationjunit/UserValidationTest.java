@@ -103,5 +103,44 @@ public class UserValidationTest {
 		Assert.assertFalse(isNotValid);
 	}
 	
+	@Test
+	public void givenPassword_WhenProper_ShouldReturnTrue() {
+		
+		UserValidation userValidator = new UserValidation();
+		boolean isValid = userValidator.validatePassword("AshikaCh@dag11");
+		Assert.assertTrue(isValid);
+	}
 	
+	@Test
+	public void givenPassword_WhenLessThanEightCharcters_ShouldReturnFalse() {
+		
+		UserValidation userValidator = new UserValidation();
+		boolean isNotValid = userValidator.validatePassword("sd@A12");
+		Assert.assertFalse(isNotValid);
+	}
+	
+	@Test
+	public void givenPassword_WhenNoUpperCaseCharacter_ShouldReturnFalse() {
+		
+		UserValidation userValidator = new UserValidation();
+		boolean isNotValid = userValidator.validatePassword("asjd23$df");
+		Assert.assertFalse(isNotValid);
+	}
+	
+	@Test
+	public void givenPassword_WhenNoNumericalNumber_ShouldReturnFalse() {
+		
+		UserValidation userValidator = new UserValidation();
+		boolean isNotValid = userValidator.validatePassword("asjdAG$df");
+		Assert.assertFalse(isNotValid);
+	}
+	
+	@Test
+	public void givenPassword_WhenMoreThanOneSpecialCharacter_ShouldReturnFalse() {
+		
+		UserValidation userValidator = new UserValidation();
+		boolean isNotValid = userValidator.validatePassword("asjd23^$df");
+		Assert.assertFalse(isNotValid);
+	}
+
 }
