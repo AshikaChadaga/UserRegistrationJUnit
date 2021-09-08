@@ -61,4 +61,23 @@ public class UserValidationTest {
 		
 	}
 	
+	@Test
+	public void givenEmailAddress_WhenProper_ShouldReturnTrue() {
+		
+		UserValidation userValidator = new UserValidation();
+		boolean isValid = userValidator.validateEmail("ashikachadaga@gmail.com");
+		Assert.assertTrue(isValid);
+		
+	}
+	
+	@Test
+	public void givenEmailAddress_WhenNotProper_ShouldReturnFalse() {
+		
+		UserValidation userValidator = new UserValidation();
+		boolean isNotValid = userValidator.validateEmail("abc()*@gmail.com");
+		Assert.assertFalse(isNotValid);
+		
+	}
+	
+	
 }
