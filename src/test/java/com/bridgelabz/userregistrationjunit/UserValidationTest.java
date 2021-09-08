@@ -79,5 +79,29 @@ public class UserValidationTest {
 		
 	}
 	
+	@Test
+	public void givenMobileNumber_WhenProper_ShouldReturnTrue() {
+		
+		UserValidation userValidator = new UserValidation();
+		boolean isValid = userValidator.validateMobileNumber("91 9485736453");
+		Assert.assertTrue(isValid);
+	}
+	
+	@Test
+	public void givenMobileNumber_WhenNoSpace_ShouldReturnFalse() {
+		
+		UserValidation userValidator = new UserValidation();
+		boolean isNotValid = userValidator.validateMobileNumber("919485736453");
+		Assert.assertFalse(isNotValid);
+	}
+	
+	@Test
+	public void givenMobileNumber_WhenNumberLessThanTenDigits_ShouldReturnFalse() {
+		
+		UserValidation userValidator = new UserValidation();
+		boolean isNotValid = userValidator.validateMobileNumber("91 5736453");
+		Assert.assertFalse(isNotValid);
+	}
+	
 	
 }
