@@ -3,11 +3,12 @@ package com.bridgelabz.userregistrationjunit;
 import org.junit.Assert ; 
 import org.junit.Test;
 import com.bridgelabz.userregistrationjunit.UserValidation;
+import com.bridgelabz.userregistrationjunit.UserValidationException.ExceptionType;
 
 public class UserValidationTest {
 	
 	@Test
-	public void givenFirstName_WhenProper_ShouldReturnTrue() throws UserValidationException {
+	public void givenFirstName_WhenProper_ShouldReturnTrue(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isValid = userValidator.validateName("Ashika");
@@ -16,7 +17,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenFirstName_WhenFirstLetterIsSmall_ShouldReturnFalse() throws UserValidationException{
+	public void givenFirstName_WhenFirstLetterIsSmall_ShouldReturnFalse(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validateName("ashika");
@@ -25,7 +26,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenFirstName_WhenLesserThanThreeCharacters_ShouldReturnFalse() throws UserValidationException{
+	public void givenFirstName_WhenLesserThanThreeCharacters_ShouldReturnFalse(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validateName("As");
@@ -41,7 +42,8 @@ public class UserValidationTest {
 			userValidator.validateName(null);
 		}
 		catch(UserValidationException e){
-			Assert.assertEquals("Please Enter Valid Name. NULL Name Entered.",e.getMessage());
+			Assert.assertEquals(UserValidationException.ExceptionType.ENTERED_NULL,e.type);
+			e.printStackTrace();
 		}
 		
 	}
@@ -54,13 +56,14 @@ public class UserValidationTest {
 			userValidator.validateName("");
 		}
 		catch(UserValidationException e){
-			Assert.assertEquals("Please Enter Valid Name. EMPTY Name Entered.",e.getMessage());
+			Assert.assertEquals(UserValidationException.ExceptionType.ENTERED_EMPTY,e.type);
+			e.printStackTrace();
 		}
 		
 	}
 	
 	@Test
-	public void givenFirstName_WhenNumericCharatersArePresent_ShouldReturnFalse() throws UserValidationException{
+	public void givenFirstName_WhenNumericCharatersArePresent_ShouldReturnFalse(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validateName("Asjsak23");
@@ -69,7 +72,7 @@ public class UserValidationTest {
 	}
 
 	@Test
-	public void givenFirstName_WhenSpecialCharatersArePresent_ShouldReturnFalse() throws UserValidationException{
+	public void givenFirstName_WhenSpecialCharatersArePresent_ShouldReturnFalse(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validateName("Asjsak@^");
@@ -78,7 +81,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenLastName_WhenProper_ShouldReturnTrue() throws UserValidationException{
+	public void givenLastName_WhenProper_ShouldReturnTrue(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isValid = userValidator.validateName("Chadaga");
@@ -87,7 +90,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenLastName_WhenFirstLetterIsSmall_ShouldReturnFalse() throws UserValidationException{
+	public void givenLastName_WhenFirstLetterIsSmall_ShouldReturnFalse(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validateName("chadaga");
@@ -96,7 +99,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenLastName_WhenLesserThanThreeCharacters_ShouldReturnFalse() throws UserValidationException{
+	public void givenLastName_WhenLesserThanThreeCharacters_ShouldReturnFalse(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validateName("Ch");
@@ -105,33 +108,35 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenLastName_WhenNull_ShouldReturnFalse() throws UserValidationException{
+	public void givenLastName_WhenNull_ShouldReturnFalse(){
 		
 		UserValidation userValidator = new UserValidation();
 		try {
 			userValidator.validateName(null);
 		}
 		catch(UserValidationException e){
-			Assert.assertEquals("Please Enter Valid Name. NULL Name Entered.",e.getMessage());
+			Assert.assertEquals(UserValidationException.ExceptionType.ENTERED_NULL,e.type);
+			e.printStackTrace();
 		}
 		
 	}
 	
 	@Test
-	public void givenLastName_WhenEmpty_ShouldReturnFalse() throws UserValidationException{
+	public void givenLastName_WhenEmpty_ShouldReturnFalse(){
 		
 		UserValidation userValidator = new UserValidation();
 		try {
 			userValidator.validateName("");
 		}
 		catch(UserValidationException e){
-			Assert.assertEquals("Please Enter Valid Name. EMPTY Name Entered.",e.getMessage());
+			Assert.assertEquals(UserValidationException.ExceptionType.ENTERED_EMPTY,e.type);
+			e.printStackTrace();
 		}
 		
 	}
 	
 	@Test
-	public void givenLastName_WhenNumericCharatersArePresent_ShouldReturnFalse() throws UserValidationException{
+	public void givenLastName_WhenNumericCharatersArePresent_ShouldReturnFalse(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validateName("Chadag19");
@@ -140,7 +145,7 @@ public class UserValidationTest {
 	}
 
 	@Test
-	public void givenLastName_WhenSpecialCharatersArePresent_ShouldReturnFalse() throws UserValidationException{
+	public void givenLastName_WhenSpecialCharatersArePresent_ShouldReturnFalse(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validateName("Ch@d@ga%");
@@ -149,7 +154,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenProper_ShouldReturnTrue() throws UserValidationException{
+	public void givenEmailAddress_WhenProper_ShouldReturnTrue(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isValid = userValidator.validateEmail("ashikachadaga@gmail.com");
@@ -158,7 +163,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenNotProper_ShouldReturnFalse() throws UserValidationException{
+	public void givenEmailAddress_WhenNotProper_ShouldReturnFalse() {
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validateEmail("abc()*@gmail.com");
@@ -167,33 +172,35 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenNull_ShouldReturnFalse() throws UserValidationException{
+	public void givenEmailAddress_WhenNull_ShouldReturnFalse() {
 		
 		UserValidation userValidator = new UserValidation();
 		try {
 			userValidator.validateEmail(null);
 		}
 		catch(UserValidationException e){
-			Assert.assertEquals("Please Enter Valid Email Address. NULL Email Address Entered.",e.getMessage());
+			Assert.assertEquals(UserValidationException.ExceptionType.ENTERED_NULL,e.type);
+			e.printStackTrace();
 		}
 		
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenEmpty_ShouldReturnFalse() throws UserValidationException{
+	public void givenEmailAddress_WhenEmpty_ShouldReturnFalse() {
 		
 		UserValidation userValidator = new UserValidation();
 		try {
 			userValidator.validateEmail("");
 		}
 		catch(UserValidationException e){
-			Assert.assertEquals("Please Enter Valid Email Address. EMPTY Email Address Entered.",e.getMessage());
+			Assert.assertEquals(UserValidationException.ExceptionType.ENTERED_EMPTY,e.type);
+			e.printStackTrace();
 		}
 		
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenProper_ShouldReturnTrue() throws UserValidationException{
+	public void givenMobileNumber_WhenProper_ShouldReturnTrue(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isValid = userValidator.validateMobileNumber("91 9485736453");
@@ -201,7 +208,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenNoSpace_ShouldReturnFalse() throws UserValidationException{
+	public void givenMobileNumber_WhenNoSpace_ShouldReturnFalse() {
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validateMobileNumber("919485736453");
@@ -209,7 +216,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenNumberLessThanTenDigits_ShouldReturnFalse() throws UserValidationException{
+	public void givenMobileNumber_WhenNumberLessThanTenDigits_ShouldReturnFalse() {
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validateMobileNumber("91 5736453");
@@ -217,33 +224,35 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenNull_ShouldReturnFalse() throws UserValidationException{
+	public void givenMobileNumber_WhenNull_ShouldReturnFalse() {
 		
 		UserValidation userValidator = new UserValidation();
 		try {
 			userValidator.validateMobileNumber(null);
 		}
 		catch(UserValidationException e){
-			Assert.assertEquals("Please Enter Valid Mobile Number. NULL Mobile Number Entered.",e.getMessage());
+			Assert.assertEquals(UserValidationException.ExceptionType.ENTERED_NULL,e.type);
+			e.printStackTrace();
 		}
 		
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenEmpty_ShouldReturnFalse() throws UserValidationException{
+	public void givenMobileNumber_WhenEmpty_ShouldReturnFalse(){
 		
 		UserValidation userValidator = new UserValidation();
 		try {
 			userValidator.validateMobileNumber("");
 		}
 		catch(UserValidationException e){
-			Assert.assertEquals("Please Enter Valid Mobile Number. EMPTY Mobile Number Entered.",e.getMessage());
+			Assert.assertEquals(UserValidationException.ExceptionType.ENTERED_EMPTY,e.type);
+			e.printStackTrace();
 		}
 		
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenCharatersArePresent_ShouldReturnFalse() throws UserValidationException{
+	public void givenMobileNumber_WhenCharatersArePresent_ShouldReturnFalse(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validateMobileNumber("9a 948375053h");
@@ -252,7 +261,7 @@ public class UserValidationTest {
 	}
 
 	@Test
-	public void givenMobileNumber_WhenSpecialCharatersArePresent_ShouldReturnFalse() throws UserValidationException{
+	public void givenMobileNumber_WhenSpecialCharatersArePresent_ShouldReturnFalse() {
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validateMobileNumber("#6 948375*535");
@@ -261,7 +270,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenPassword_WhenProper_ShouldReturnTrue() throws UserValidationException{
+	public void givenPassword_WhenProper_ShouldReturnTrue() {
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isValid = userValidator.validatePassword("AshikaCh@dag11");
@@ -269,33 +278,35 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenPassword_WhenNull_ShouldReturnFalse() throws UserValidationException{
+	public void givenPassword_WhenNull_ShouldReturnFalse() {
 		
 		UserValidation userValidator = new UserValidation();
 		try {
 			userValidator.validatePassword(null);
 		}
 		catch(UserValidationException e){
-			Assert.assertEquals("Please Enter Valid Password. NULL Password Entered.",e.getMessage());
+			Assert.assertEquals(UserValidationException.ExceptionType.ENTERED_NULL,e.type);
+			e.printStackTrace();
 		}
 		
 	}
 	
 	@Test
-	public void givenPassword_WhenEmpty_ShouldReturnFalse() throws UserValidationException{
+	public void givenPassword_WhenEmpty_ShouldReturnFalse() {
 		
 		UserValidation userValidator = new UserValidation();
 		try {
 			userValidator.validatePassword("");
 		}
 		catch(UserValidationException e){
-			Assert.assertEquals("Please Enter Valid Password. EMPTY Password Entered.",e.getMessage());
+			Assert.assertEquals(UserValidationException.ExceptionType.ENTERED_EMPTY,e.type);
+			e.printStackTrace();
 		}
 		
 	}
 	
 	@Test
-	public void givenPassword_WhenLessThanEightCharcters_ShouldReturnFalse() throws UserValidationException{
+	public void givenPassword_WhenLessThanEightCharcters_ShouldReturnFalse() {
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validatePassword("sd@A12");
@@ -303,7 +314,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenPassword_WhenNoUpperCaseCharacter_ShouldReturnFalse() throws UserValidationException{
+	public void givenPassword_WhenNoUpperCaseCharacter_ShouldReturnFalse(){
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validatePassword("asjd23$df");
@@ -311,7 +322,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenPassword_WhenNoNumericalNumber_ShouldReturnFalse() throws UserValidationException{
+	public void givenPassword_WhenNoNumericalNumber_ShouldReturnFalse() {
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validatePassword("asjdAG$df");
@@ -319,7 +330,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenPassword_WhenMoreThanOneSpecialCharacter_ShouldReturnFalse() throws UserValidationException{
+	public void givenPassword_WhenMoreThanOneSpecialCharacter_ShouldReturnFalse() {
 		
 		UserValidation userValidator = new UserValidation();
 		boolean isNotValid = userValidator.validatePassword("asjd23^$df");
