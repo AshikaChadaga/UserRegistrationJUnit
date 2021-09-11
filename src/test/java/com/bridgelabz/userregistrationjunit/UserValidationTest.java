@@ -35,7 +35,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenFirstName_WhenNull_ShouldReturnFalse(){
+	public void givenFirstName_WhenNull_ShouldThrowUserValidationException(){
 		
 		UserValidation userValidator = new UserValidation();
 		try {
@@ -49,7 +49,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenFirstName_WhenEmpty_ShouldReturnFalse(){
+	public void givenFirstName_WhenEmpty_ShouldThrowUserValidationException(){
 		
 		UserValidation userValidator = new UserValidation();
 		try {
@@ -108,7 +108,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenLastName_WhenNull_ShouldReturnFalse(){
+	public void givenLastName_WhenNull_ShouldThrowUserValidationException(){
 		
 		UserValidation userValidator = new UserValidation();
 		try {
@@ -122,7 +122,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenLastName_WhenEmpty_ShouldReturnFalse(){
+	public void givenLastName_WhenEmpty_ShouldThrowUserValidationException(){
 		
 		UserValidation userValidator = new UserValidation();
 		try {
@@ -172,7 +172,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenNull_ShouldReturnFalse() {
+	public void givenEmailAddress_WhenNull_ShouldThrowUserValidationException() {
 		
 		UserValidation userValidator = new UserValidation();
 		try {
@@ -186,7 +186,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenEmpty_ShouldReturnFalse() {
+	public void givenEmailAddress_WhenEmpty_ShouldThrowUserValidationException() {
 		
 		UserValidation userValidator = new UserValidation();
 		try {
@@ -224,7 +224,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenNull_ShouldReturnFalse() {
+	public void givenMobileNumber_WhenNull_ShouldThrowUserValidationException() {
 		
 		UserValidation userValidator = new UserValidation();
 		try {
@@ -238,7 +238,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenEmpty_ShouldReturnFalse(){
+	public void givenMobileNumber_WhenEmpty_ShouldThrowUserValidationException(){
 		
 		UserValidation userValidator = new UserValidation();
 		try {
@@ -278,7 +278,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenPassword_WhenNull_ShouldReturnFalse() {
+	public void givenPassword_WhenNull_ShouldThrowUserValidationException() {
 		
 		UserValidation userValidator = new UserValidation();
 		try {
@@ -292,7 +292,7 @@ public class UserValidationTest {
 	}
 	
 	@Test
-	public void givenPassword_WhenEmpty_ShouldReturnFalse() {
+	public void givenPassword_WhenEmpty_ShouldThrowUserValidationException() {
 		
 		UserValidation userValidator = new UserValidation();
 		try {
