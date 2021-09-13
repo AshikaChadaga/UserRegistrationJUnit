@@ -2,9 +2,14 @@ package com.bridgelabz.userregistrationjunit;
 
 import com.bridgelabz.userregistrationjunit.UserValidationException.ExceptionType;
 
+@FunctionalInterface
+interface UserDetailsValidationIF {
+	public boolean validate(String x) throws UserValidationException;
+}
+
 public class UserValidation {
 	
-	public boolean validateName(String name){
+	UserDetailsValidationIF validateName = name -> {
 
 		try {
 			if (name.length() == 0) {
@@ -17,10 +22,10 @@ public class UserValidation {
 		catch (NullPointerException e) {
 			throw new UserValidationException(ExceptionType.ENTERED_NULL,"Please Enter Valid Name. NULL Name Entered.");
 		}
-	}
+	};
 	
 
-	public boolean validateEmail(String email){
+	UserDetailsValidationIF validateEmail = email ->{
 
 		try {
 			if (email.length() == 0) {
@@ -33,9 +38,9 @@ public class UserValidation {
 			throw new UserValidationException(ExceptionType.ENTERED_NULL,"Please Enter Valid Email Address. NULL Email Address Entered.");
 
 		}
-	}
+	};
 
-	public boolean validateMobileNumber(String mobileNumber){
+	UserDetailsValidationIF validateMobileNumber = mobileNumber -> {
 
 		try {
 			if (mobileNumber.length() == 0) {
@@ -47,9 +52,9 @@ public class UserValidation {
 		catch (NullPointerException e) {
 			throw new UserValidationException(ExceptionType.ENTERED_NULL,"Please Enter Valid Mobile Number. NULL Mobile Number Entered.");
 		}
-	}
+	};
 
-	public boolean validatePassword(String password) {
+	UserDetailsValidationIF validatePassword = password -> {
 
 		try {
 			if (password.length() == 0) {
@@ -61,7 +66,7 @@ public class UserValidation {
 		} catch (NullPointerException e) {
 			throw new UserValidationException(ExceptionType.ENTERED_NULL,"Please Enter Valid Password. NULL Password Entered.");
 		}	
-	}
+	};
 	
 
 }
